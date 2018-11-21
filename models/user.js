@@ -22,16 +22,6 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-const Genre = mongoose.model('Genre', genreSchema);
+const User = mongoose.model('User', userSchema);
 
-function validateGenre(genre) {
-  const schema = {
-    name: Joi.string().min(3).required()
-  };
-
-  return Joi.validate(genre, schema);
-}
-
-exports.genreSchema = genreSchema;
-exports.Genre = Genre; 
-exports.validate = validateGenre;
+exports.User = User; 
