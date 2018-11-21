@@ -5,6 +5,7 @@ const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 const Mongoose = require('mongoose');
 const users = require('./routes/users');
+const auth = require('./routes/auth');
 
 
 //JWT Check
@@ -17,6 +18,7 @@ Mongoose.connect('mongodb://localhost/RTVTS')
 //Express Setup
 app.use(Express.json());
 app.use('/api/users', users);
+app.use('/api/auth', auth);
 
 //Port setup
 const port = process.env.PORT || 3000;
