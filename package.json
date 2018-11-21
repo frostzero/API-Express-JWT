@@ -13,7 +13,8 @@
     "bcrypt": "^3.0.2",
     "config": "^3.0.0",
     "express": "^4.16.4",
-    "jio": "^3.35.0",
+    "joi": "^14.1.0",
+    "joi-objectid": "^2.0.0",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.13"
   }

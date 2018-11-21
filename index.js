@@ -1,10 +1,10 @@
-//Imports
 const Express = require('express');
 const app = Express();
 
-const Jio = require('jio');
+const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 const Mongoose = require('mongoose');
-const users = require('./routes/users')
+const users = require('./routes/users');
 
 
 //JWT Check
@@ -12,7 +12,7 @@ const users = require('./routes/users')
 //Mongose Connection
 Mongoose.connect('mongodb://localhost/RTVTS')
     .then( () => console.log('Connected to database...'))
-    .catch(err => console.error('Error in connecting database: ', err));
+    .catch( err => console.error('Error in connecting database: ', err));
 
 //Express Setup
 app.use(Express.json());
