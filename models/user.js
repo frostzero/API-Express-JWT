@@ -33,7 +33,12 @@ function validateUser(user) {
     return Joi.validate(user, schema);
 }
 
+
 const User = mongoose.model('User', userSchema);
+userSchema.method.generateAuthToken = function() {
+    const token = jwt.sign({_id : this._id}, config.get('SECRET_KEY'));
+}
 
 exports.User = User;
 exports.validate = validateUser;
+ 

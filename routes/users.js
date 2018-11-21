@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
     //Save user object to DB.
     await user.save();
 
-    const token = jwt.sign({_id : user._id}, config.get('SECRET_KEY'));
+    const token = user.generateAuthToken();
     res.send({
         name: user.name,
         email: user.email,
