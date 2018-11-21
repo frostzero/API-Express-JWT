@@ -4,11 +4,16 @@ const app = Express();
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 const Mongoose = require('mongoose');
+const config = require('config');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 
 
 //JWT Check
+if (!config.get('SECRET_KEY')) {
+    console.error('FATAL ERROR: KEY is not defined.');
+    process.exit(1);
+}
 
 //Mongose Connection
 Mongoose.connect('mongodb://localhost/RTVTS')

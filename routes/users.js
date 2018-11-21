@@ -2,6 +2,8 @@
 const {User, validate} = require('../models/user');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 const express = require('express');
 const router = express.Router();
 
@@ -28,7 +30,12 @@ router.post('/', async (req, res) => {
     //Save user object to DB.
     await user.save();
 
-    res.send(user);
+    const token = jwt.sign({_id : user._id}, config.get('SECRET_KEY'));
+    res.send({
+        name: user.name,
+        email: user.email,
+        token: token
+    });
 });
 
 module.exports = router;
