@@ -3,6 +3,8 @@ const Express = require('express');
 const app = Express();
 
 const Mongoose = require('mongoose');
+const users = require('./routes/users')
+
 
 //JWT Check
 
@@ -13,6 +15,7 @@ Mongoose.connect('mongodb://localhost/RTVTS')
 
 //Express Setup
 app.use(Express.json());
+app.use('/api/users', users);
 
 //Port setup
 const port = process.env.PORT || 3000;
