@@ -15,6 +15,7 @@ if (!config.get('SECRET_KEY')) {
     process.exit(1);
 }
 
+//Mongo Connection Example : mongoose.connect('mongodb://username:password@host:port/database?options...');
 //Mongose Connection
 Mongoose.connect('mongodb://localhost/RTVTS')
     .then( () => console.log('Connected to database...'))
